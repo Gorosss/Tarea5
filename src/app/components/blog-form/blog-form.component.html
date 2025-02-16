@@ -1,10 +1,12 @@
-<div class="form">
-    <input type="text" [(ngModel)]="newVideoGame.title" placeholder="Title">
-    <input type="text" [(ngModel)]="newVideoGame.img" placeholder="Image URL">
-    <input type="text" [(ngModel)]="newVideoGame.text" placeholder="Content">
-    <input type="date" [(ngModel)]="newVideoGame.gameReleaseDate" placeholder="Date">
-    <input type="date" [(ngModel)]="newVideoGame.publicationDate" placeholder="Date">
-    <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize">
-    <button (click)="publishPost()" >Publish Post</button>
+<div class="form-container">
+    <span class="new-post-span">New Post</span>
+    <h2>Create Blog Post</h2>
+    <div class="form">
+        <input type="text" [(ngModel)]="newVideoGame.title" placeholder="Title">
+        <input type="text" [(ngModel)]="newVideoGame.img" placeholder="Image URL">
+        <textarea [(ngModel)]="newVideoGame.text" placeholder="Content"></textarea>
+        <input type="date" [(ngModel)]="newVideoGame.gameReleaseDate" placeholder="Date">
+        <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize (€)">
+        <button class="publish-btn" (click)="publishPost()">Publish Post</button>
+    </div>
 </div>
-
