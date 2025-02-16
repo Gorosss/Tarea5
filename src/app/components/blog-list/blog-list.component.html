@@ -1,15 +1,25 @@
-<ul>
-    @for (article of this.articles(); track $index) {
+<div class="list-container">
+  <span class="badge">Posts</span>
+  <h2>Latest Updates</h2>
+  <div class="posts-list">
+    <ul>
+        @for (article of this.articles(); track article) {
         <li>
-            <h2>{{ article.title }}</h2>
-            <img src="{{ article.img }}" alt="{{ article.title }}">
-            <p>{{ article.text }}</p>
-            <p>Game Release Date: {{ article.gameReleaseDate }}</p>
-            <p>Publication Date: {{ article.publicationDate }}</p>
-            <p>Prize: {{ article.prize }}€</p>
+            <div class="article-header">
+                <h2>{{ article.title }}</h2>
+                <p>Publication Date: {{ article.publicationDate }}</p>
+            </div>
+          <picture>
+            <img src="{{ article.img }}" alt="{{ article.title }}" />
+          </picture>
+          <p>{{ article.text }}</p>
+          <p>Game Release Date: {{ article.gameReleaseDate }}</p>
+          <p>Prize: {{ article.prize }}€</p>
         </li>
-    }
-    @empty {
+        } @empty {
         <li>No articles yet</li>
-    }
-</ul>
+        }
+      </ul>
+  </div>
+  
+</div>
