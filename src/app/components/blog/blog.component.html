@@ -1,4 +1,4 @@
 <div>
-    <app-blog-form/>
-    <app-blog-article/>
+    <app-blog-form (sendPost)="getDataForm($event)"/>
+    <app-blog-list [articles]="blogList"/>
 </div>

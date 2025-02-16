@@ -22,7 +22,6 @@ export class BlogFormComponent {
   @Output() sendPost: EventEmitter<IVideoGame> = new EventEmitter();
 
   publishPost() {
-    console.log(this.newVideoGame);
     this.sendPost.emit(this.newVideoGame);
     this.newVideoGame = {
       title: "",
