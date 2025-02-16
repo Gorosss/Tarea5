@@ -1,22 +1,32 @@
-import { Component } from '@angular/core';
-import { BlogListComponent } from '../blog-list/blog-list.component';
-import { FormsModule } from '@angular/forms';
+import { Component} from '@angular/core';
+import { BlogFormComponent } from '../blog-form/blog-form.component';
+import { BlogArticleComponent } from '../blog-article/blog-article.component';
 import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
 
 
 @Component({
   selector: 'app-blog',
-  imports: [BlogListComponent, FormsModule],
+  imports: [BlogFormComponent, BlogArticleComponent],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
 export class BlogComponent {
-  newVideoGame: IVideoGame = {
-    title: "",
-    img: "",
-    text: "",
-    publicationDate: "",
-    gameReleaseDate: "",
-    prize: 0
-  }
+  blogList : IVideoGame[] = [
+    {
+      "title": "Nuevo Zelda anunciado",
+      "img": "https://example.com/zelda.jpg",
+      "text": "Nintendo ha anunciado un nuevo juego de Zelda...",
+      "publicationDate": "2025-02-15",
+      "gameReleaseDate": "2025-02-15",
+      "prize": 60
+    },
+    {
+      "title": "DLC de Elden Ring",
+      "img": "https://example.com/zeeldenringlda.jpg",
+      "text": "FromSoftware lanzará un DLC para Elden Ring...",
+      "publicationDate": "2025-02-15",
+      "gameReleaseDate": "2024-02-15",
+      "prize": 60
+    }
+  ];
 }
