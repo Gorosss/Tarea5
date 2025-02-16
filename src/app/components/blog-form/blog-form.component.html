@@ -1,0 +1,26 @@
+<div class="form-container">
+    <span class="new-post-span">New Post</span>
+    <h2>Create Blog Post</h2>
+
+    <div class="form">
+        <input type="text" [(ngModel)]="newVideoGame.title" placeholder="Title" [class.error]="errors.title">
+        <p class="error-message" *ngIf="errors.title">{{ errors.title }}</p>
+
+        <input type="text" [(ngModel)]="newVideoGame.img" placeholder="Image URL" [class.error]="errors.img">
+        <p class="error-message" *ngIf="errors.img">{{ errors.img }}</p>
+
+        <textarea [(ngModel)]="newVideoGame.text" placeholder="Content" [class.error]="errors.text"></textarea>
+        <p class="error-message" *ngIf="errors.text">{{ errors.text }}</p>
+
+        <div class="form-release-date">
+            <label>Release date</label>
+            <input type="date" [(ngModel)]="newVideoGame.gameReleaseDate" placeholder="Game Release Date" [class.error]="errors.gameReleaseDate">
+        </div>
+        <p class="error-message" *ngIf="errors.gameReleaseDate">{{ errors.gameReleaseDate }}</p>        
+
+        <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize (€)" [class.error]="errors.prize">
+        <p class="error-message" *ngIf="errors.prize">{{ errors.prize }}</p>
+
+        <button class="publish-btn" (click)="publishPost()">Publish Post</button>
+    </div>
+</div>

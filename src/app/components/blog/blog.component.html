@@ -1,2 +1,8 @@
-
-
+<div class="wrapper">
+    <section class="blog-form">
+        <app-blog-form (sendPost)="getDataForm($event)"/>
+    </section>
+    <section class="blog-list">
+        <app-blog-list [articles]="blogList"/>
+    </section>
+</div>

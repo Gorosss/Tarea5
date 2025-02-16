@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
 
 @Component({
   selector: 'app-blog-list',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './blog-list.component.css'
 })
 export class BlogListComponent {
+  articles = input<IVideoGame[]>([]);
 
+  ngDoCheck() {
+    console.log(this.articles(), "articles")
+  }
 }
