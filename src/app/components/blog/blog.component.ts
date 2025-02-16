@@ -14,7 +14,7 @@ export class BlogComponent {
   blogList : IVideoGame[] = [
     {
       "title": "Nuevo Zelda anunciado",
-      "img": "https://example.com/zelda.jpg",
+      "img": "https://media.revistagq.com/photos/6105a5e0170e728db45e7649/16:9/w_1280,c_limit/Zelda-Breath-of-the-Wild.jpeg",
       "text": "Nintendo ha anunciado un nuevo juego de Zelda...",
       "publicationDate": "2025-02-15",
       "gameReleaseDate": "2025-02-15",
@@ -22,7 +22,7 @@ export class BlogComponent {
     },
     {
       "title": "DLC de Elden Ring",
-      "img": "https://example.com/zeeldenringlda.jpg",
+      "img": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2024/02/elden-ring-3277980.jpg",
       "text": "FromSoftware lanzará un DLC para Elden Ring...",
       "publicationDate": "2025-02-15",
       "gameReleaseDate": "2024-02-15",
