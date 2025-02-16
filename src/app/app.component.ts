@@ -8,5 +8,4 @@ import { BlogComponent } from './components/blog/blog.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Tarea5';
 }
