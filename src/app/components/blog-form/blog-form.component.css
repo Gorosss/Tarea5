@@ -13,7 +13,16 @@
 }
 
 .form-release-date label {
-    width: 15%;
+    width: 20%;
+}
+
+.form-prize  {
+    display: flex;
+    align-items: center;
+}
+
+.form-prize label {
+    width: 10%;
 }
 
 .new-post-span {

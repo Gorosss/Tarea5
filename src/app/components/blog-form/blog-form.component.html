@@ -13,12 +13,16 @@
         <p class="error-message" *ngIf="errors.text">{{ errors.text }}</p>
 
         <div class="form-release-date">
-            <label>Release date</label>
+            <label>Game release date:</label>
             <input type="date" [(ngModel)]="newVideoGame.gameReleaseDate" placeholder="Game Release Date" [class.error]="errors.gameReleaseDate">
         </div>
         <p class="error-message" *ngIf="errors.gameReleaseDate">{{ errors.gameReleaseDate }}</p>        
 
-        <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize (€)" [class.error]="errors.prize">
+
+        <div class="form-prize">
+            <label>Prize (€):</label>
+            <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize (€)" [class.error]="errors.prize">
+        </div>
         <p class="error-message" *ngIf="errors.prize">{{ errors.prize }}</p>
 
         <button class="publish-btn" (click)="publishPost()">Publish Post</button>
