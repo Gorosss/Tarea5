@@ -70,3 +70,36 @@
 .article-extra {
   font-size: 14px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .article {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .article-image {
+    flex: 0 0 auto;
+    width: 100%;
+  }
+
+  .article-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .article-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .article-title {
+    font-size: 18px;
+  }
+
+  .article-text {
+    -webkit-line-clamp: 3; /* Reduce la cantidad de líneas en pantallas pequeñas */
+  }
+}
