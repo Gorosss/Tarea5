@@ -1,5 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
+import { BlogServiceService } from '../../services/blog-service.service';
 
 @Component({
   selector: 'app-blog-list',
@@ -8,9 +9,12 @@ import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
   styleUrl: './blog-list.component.css'
 })
 export class BlogListComponent {
-  articles = input<IVideoGame[]>([]);
+  articles : IVideoGame[] = [];
 
-  ngDoCheck() {
-    console.log(this.articles(), "articles")
+  blogComponentService = inject(BlogServiceService);
+  
+  ngOnInit() {
+    this.articles = this.blogComponentService.getAll();
   }
+
 }

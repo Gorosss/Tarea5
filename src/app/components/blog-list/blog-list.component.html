@@ -3,19 +3,21 @@
   <h2>Latest Updates</h2>
   <div class="posts-list">
     <ul>
-        @for (article of this.articles(); track article) {
-        <li>
-            <div class="article-header">
-                <h2>{{ article.title }}</h2>
-                <p>Publication Date: {{ article.publicationDate }}</p>
+        @for (article of articles; track article) {
+          <li class="article">
+            <picture class="article-image">
+              <img src="{{ article.img }}" alt="{{ article.title }}" />
+            </picture>
+            <div class="article-content">
+              <div class="article-header">
+              <h2 class="article-title">{{ article.title }}</h2>
+              <p class="article-date">Publication date: {{ article.publicationDate }}</p>
             </div>
-          <picture>
-            <img src="{{ article.img }}" alt="{{ article.title }}" />
-          </picture>
-          <p>{{ article.text }}</p>
-          <p>Game Release Date: {{ article.gameReleaseDate }}</p>
-          <p>Prize: {{ article.prize }}€</p>
-        </li>
+              <p class="article-text">{{ article.text }}</p>
+              <p class="article-extra">Prize: {{ article.prize }}€</p>
+              <p class="article-extra">Game release date: {{ article.gameReleaseDate }}</p>
+            </div>
+          </li>
         } @empty {
         <li>No articles yet</li>
         }
