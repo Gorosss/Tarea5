@@ -60,7 +60,8 @@
 
 .article-text {
   display: -webkit-box;
-  -webkit-line-clamp: 4; /* Limita a 2 líneas */
+  line-clamp: 4;
+  -webkit-line-clamp: 4; 
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -100,6 +101,7 @@
   }
 
   .article-text {
-    -webkit-line-clamp: 3; /* Reduce la cantidad de líneas en pantallas pequeñas */
+    line-clamp: 3;
+    -webkit-line-clamp: 3; 
   }
 }
