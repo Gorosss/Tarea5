@@ -3,7 +3,7 @@
   <h2>Latest Updates</h2>
   <div class="posts-list">
     <ul>
-        @for (article of this.articles().slice().reverse(); track article) {
+        @for (article of articles; track article) {
           <li class="article">
             <picture class="article-image">
               <img src="{{ article.img }}" alt="{{ article.title }}" />

@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Injectable} from '@angular/core';
 import { BlogFormComponent } from '../blog-form/blog-form.component';
 import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
 import { BlogListComponent } from '../blog-list/blog-list.component';
@@ -10,28 +10,6 @@ import { BlogListComponent } from '../blog-list/blog-list.component';
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
-export class BlogComponent {
-  blogList : IVideoGame[] = [
-    {
-      "title": "New Zelda",
-      "img": "https://media.revistagq.com/photos/6105a5e0170e728db45e7649/16:9/w_1280,c_limit/Zelda-Breath-of-the-Wild.jpeg",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "publicationDate": "2025-02-15",
-      "gameReleaseDate": "2026-05-15",
-      "prize": 60
-    },
-    {
-      "title": "Elden Ring DLC Shadow of the Elden Lord",
-      "img": "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2024/02/elden-ring-3277980.jpg",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit Lorem ipsum dolor sit amet, consectetur adipiscing elit lorem ipsum dolor sit amet, consectetur adipiscing elit",
-      "publicationDate": "2025-02-15",
-      "gameReleaseDate": "2026-02-11",
-      "prize": 60
-    }
-  ];
 
-  getDataForm(event: IVideoGame) {
-    this.blogList.push(event);
-    console.log(this.blogList)
-  }
+export class BlogComponent {
 }

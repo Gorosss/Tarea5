@@ -1,7 +1,9 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { IVideoGame } from '../../interfaces/ivideo-game.interfaces';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { BlogServiceService } from '../../services/blog-service.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-blog-form',
@@ -10,6 +12,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './blog-form.component.css',
 })
 export class BlogFormComponent {
+
   newVideoGame: IVideoGame = {
     title: '',
     img: '',
@@ -18,7 +21,7 @@ export class BlogFormComponent {
     gameReleaseDate: '',
     prize: 0,
   };
-
+ 
   errors: any = {
     title: '',
     img: '',
@@ -27,29 +30,34 @@ export class BlogFormComponent {
     prize: '',
   };
 
-  @Output() sendPost: EventEmitter<IVideoGame> = new EventEmitter();
+  blogComponentService = inject(BlogServiceService);
 
-  publishPost() {
-    if (!this.validateForm()) {
+  publishPost(newGameForm : NgForm) {
+
+    let newVideoGame : IVideoGame = newGameForm.value;
+
+    if (!this.validateForm(newVideoGame)) {
       return;
     }
 
-    this.newVideoGame.publicationDate = new Date().toISOString().split('T')[0]
+    newVideoGame.publicationDate = new Date().toISOString().split('T')[0]
 
-    this.sendPost.emit(this.newVideoGame);
+    let response = this.blogComponentService.insert(newVideoGame);
 
-    // Reset form
-    this.newVideoGame = {
-      title: '',
-      img: '',
-      text: '',
-      publicationDate: '',
-      gameReleaseDate: '',
-      prize: 0,
-    };
+    if(response.status === 200) {
+      newGameForm.resetForm();
+      Swal.fire({
+        title: 'Congrats!',
+        icon: 'success',
+        text: response.message,
+        confirmButtonText: 'Ok',
+      })
+    }
+
+
   }
 
-  validateForm(): boolean {
+  validateForm( newVideoGame : IVideoGame ): boolean {
     let isValid = true;
 
     // Reset errors
@@ -63,27 +71,27 @@ export class BlogFormComponent {
     };
 
     // Validaciones individuales
-    if (!this.newVideoGame.title.trim()) {
+    if (!newVideoGame.title.trim()) {
       this.errors.title = 'Title is required';
       isValid = false;
     }
 
-    if (!this.newVideoGame.img.trim()) {
+    if (!newVideoGame.img.trim()) {
       this.errors.img = 'Image URL is required';
       isValid = false;
     }
 
-    if (!this.newVideoGame.text.trim()) {
+    if (!newVideoGame.text.trim()) {
       this.errors.text = 'Description is required';
       isValid = false;
     }
 
-    if (!this.newVideoGame.gameReleaseDate.trim()) {
+    if (!newVideoGame.gameReleaseDate.trim()) {
       this.errors.gameReleaseDate = 'Game realease date is required';
       isValid = false;
     }
 
-    if (this.newVideoGame.prize <= 0) {
+    if (newVideoGame.prize <= 0) {
       this.errors.prize = 'Game prize must be greater than 0';
       isValid = false;
     }

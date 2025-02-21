@@ -2,29 +2,32 @@
     <span class="new-post-span">New Post</span>
     <h2>Create Blog Post</h2>
 
-    <div class="form">
-        <input type="text" [(ngModel)]="newVideoGame.title" placeholder="Title" [class.error]="errors.title">
+    <form class="form" #newGameForm="ngForm" (ngSubmit)="publishPost(newGameForm)">
+        <label for="title">Title</label>
+        <input type="text" id="title" name="title" ngModel placeholder="Introduce game title" [class.error]="errors.title">
         <p class="error-message" *ngIf="errors.title">{{ errors.title }}</p>
 
-        <input type="text" [(ngModel)]="newVideoGame.img" placeholder="Image URL" [class.error]="errors.img">
+        <label for="img">Image</label>
+        <input type="text" id="img" name="img" ngModel placeholder="Image URL" [class.error]="errors.img">
         <p class="error-message" *ngIf="errors.img">{{ errors.img }}</p>
 
-        <textarea [(ngModel)]="newVideoGame.text" placeholder="Content" [class.error]="errors.text"></textarea>
+        <label for="text">Game content</label>
+        <textarea id="text" name="text" ngModel placeholder="Content" [class.error]="errors.text"></textarea>
         <p class="error-message" *ngIf="errors.text">{{ errors.text }}</p>
 
         <div class="form-release-date">
-            <label>Game release date:</label>
-            <input type="date" [(ngModel)]="newVideoGame.gameReleaseDate" placeholder="Game Release Date" [class.error]="errors.gameReleaseDate">
+            <label for="gameReleaseDate">Game release date</label>
+            <input type="date" id="gameReleaseDate" name="gameReleaseDate" ngModel placeholder="Game Release Date" [class.error]="errors.gameReleaseDate">
         </div>
         <p class="error-message" *ngIf="errors.gameReleaseDate">{{ errors.gameReleaseDate }}</p>        
 
 
         <div class="form-prize">
-            <label>Prize (€):</label>
-            <input type="number" [(ngModel)]="newVideoGame.prize" placeholder="Prize (€)" [class.error]="errors.prize">
+            <label for="prize">Prize (€)</label>
+            <input type="number" id="prize" name="prize" ngModel [class.error]="errors.prize">
         </div>
         <p class="error-message" *ngIf="errors.prize">{{ errors.prize }}</p>
 
-        <button class="publish-btn" (click)="publishPost()">Publish Post</button>
-    </div>
+        <button type="submit" class="publish-btn">Publish Post</button>
+    </form>
 </div>
