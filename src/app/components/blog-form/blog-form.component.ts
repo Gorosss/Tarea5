@@ -13,13 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class BlogFormComponent {
 
-  newVideoGame: IVideoGame = {
-    title: '',
-    img: '',
-    text: '',
-    publicationDate: '',
-    gameReleaseDate: '',
-    prize: 0,
+  initialValues = {
+    title: "",
+    img: "",
+    text: "",
+    gameReleaseDate: "",
+    prize: ""
   };
  
   errors: any = {
@@ -36,16 +35,18 @@ export class BlogFormComponent {
 
     let newVideoGame : IVideoGame = newGameForm.value;
 
+
     if (!this.validateForm(newVideoGame)) {
       return;
     }
+
 
     newVideoGame.publicationDate = new Date().toISOString().split('T')[0]
 
     let response = this.blogComponentService.insert(newVideoGame);
 
     if(response.status === 200) {
-      newGameForm.resetForm();
+      newGameForm.resetForm( this.initialValues );
       Swal.fire({
         title: 'Congrats!',
         icon: 'success',
@@ -70,23 +71,26 @@ export class BlogFormComponent {
       prize: '',
     };
 
+
+
+
     // Validaciones individuales
-    if (!newVideoGame.title.trim()) {
+    if (!newVideoGame.title.trim() || newVideoGame.title.length === null) {
       this.errors.title = 'Title is required';
       isValid = false;
     }
 
-    if (!newVideoGame.img.trim()) {
+    if (!newVideoGame.img.trim() || newVideoGame.title.length === null) {
       this.errors.img = 'Image URL is required';
       isValid = false;
     }
 
-    if (!newVideoGame.text.trim()) {
+    if (!newVideoGame.text.trim() || newVideoGame.title.length === null) {
       this.errors.text = 'Description is required';
       isValid = false;
     }
 
-    if (!newVideoGame.gameReleaseDate.trim()) {
+    if (!newVideoGame.gameReleaseDate.trim() || newVideoGame.title.length === null) {
       this.errors.gameReleaseDate = 'Game realease date is required';
       isValid = false;
     }
@@ -95,6 +99,7 @@ export class BlogFormComponent {
       this.errors.prize = 'Game prize must be greater than 0';
       isValid = false;
     }
+
 
     return isValid;
   }
